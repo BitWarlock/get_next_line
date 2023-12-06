@@ -6,44 +6,45 @@
 /*   By: mrezki <mrezki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 11:44:42 by mrezki            #+#    #+#             */
-/*   Updated: 2023/12/05 23:34:40 by mrezki           ###   ########.fr       */
+/*   Updated: 2023/12/06 01:54:12 by mrezki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_read_buffer(int fd, char *rest, char *buffer)
+char	*ft_read_rest(int fd, char *rest)
 {
+	char	*buffer;
 	int	check;
-	int	i;
 
-	i = 0;
-	check = read(fd, buffer, BUFFER_SIZE);
-	if (check < 0)
+	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buffer)
 		return (NULL);
-	while (buffer[i])
+	rest = strdup("");
+	check = read(fd, buffer, BUFFER_SIZE);
+	while (check && !(ft_strchr(rest, '\n')))
 	{
-		if (buffer[i] == '\n')
-			return (ft_substr(buffer, 0, i + 1));
-		i++;
+		check = read(fd, buffer, BUFFER_SIZE);
+		if (check < 0)
+			return (free(buffer), NULL);
+		rest = ft_strjoin(rest, buffer);
+		rest[check] = '\0';
 	}
-	return (buffer);
+	free(buffer);
+	return (rest);
 }
 
 char	*get_next_line(int fd)
 {
 	static char	*rest;
-	char		*buffer;
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!buffer)
+	ft_read_rest(fd, rest);
+	if (!rest)
 		return (NULL);
-	buffer = ft_read_buffer(fd, rest, buffer);
-	printf("%s\n", buffer);
-	// line = ft_extract_line(rest, buffer);
+	// line = ft_extract_line(rest);
 
 	return (line);
 }

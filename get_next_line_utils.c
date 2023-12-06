@@ -6,7 +6,7 @@
 /*   By: mrezki <mrezki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 11:44:44 by mrezki            #+#    #+#             */
-/*   Updated: 2023/12/04 19:25:50 by mrezki           ###   ########.fr       */
+/*   Updated: 2023/12/06 01:52:56 by mrezki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,56 +23,41 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+char    *ft_strchr(const char *s, int c)
 {
-	size_t	i;
-	size_t	len;
-
-	i = 0;
-	len = ft_strlen(src);
-	if (dstsize != 0)
-	{
-		while (src[i] && i < dstsize - 1)
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
-	}
-	return (len);
+        c = (unsigned char)c;
+        while (*s)
+        {
+                if ((unsigned char)*s == c)
+                        return ((char *)s);
+                s++;
+        }
+        if (c == '\0')
+                return ((char *)s);
+        return (NULL);
 }
 
-char	*ft_strdup(const char *src)
+char    *ft_strjoin(char *s1, char *s2)
 {
-	char	*ptr;
-	int		len;
+        char    *ptr;
+        int             len1;
+        int             len2;
 	int		i;
+	int		j;
 
-	i = 0;
-	len = ft_strlen(src);
-	ptr = malloc(sizeof(char) * len + 1);
-	if (!ptr)
-		return (NULL);
-	ft_strlcpy(ptr, src, len + 1);
-	return (ptr);
-}
-
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	char	*ptr;
-	size_t	i;
-
-	if (!s)
-		return (NULL);
-	i = 0;
-	if (start >= ft_strlen(s))
-		return (ft_strdup(""));
-	i = ft_strlen(s) - start;
-	if (i > len)
-		i = len;
-	ptr = malloc(sizeof(char) * i + 1);
-	if (!ptr)
-		return (NULL);
-	ft_strlcpy(ptr, s + start, i + 1);
-	return (ptr);
+	i = -1;
+        if (s1 == NULL || s2 == NULL)
+                return (NULL);
+        len1 = ft_strlen(s1);
+        len2 = ft_strlen(s2);
+        ptr = malloc(sizeof(char) * len1 + len2 + 1);
+        if (!ptr)
+                return (NULL);
+	while (s1[++i])
+		ptr[i] = s1[i];
+	j = -1;
+	while (s2[++j])
+		ptr[i++] = s2[j];
+	ptr[len1 + len2] = '\0';
+        return (ptr);
 }
