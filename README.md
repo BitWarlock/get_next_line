@@ -27,7 +27,7 @@ Test with the default buffer size:
 
 Test with custom buffer size:
     ```
-    make BUFFER_SIZE=size
+    make run BUFFER_SIZE=size
     ```
 
 To remove the executable run:
