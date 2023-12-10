@@ -8,9 +8,9 @@ int main(void)
 {
 	int	i;
 	int	fd;
-	int	file;
+	unsigned int	file;
 	char		*line;
-	char		*files[] = {"long_line.txt", "mul_nl.txt", "one_ch.txt", "empty.txt", "basic.txt", "basic.txt"};
+	char		*files[] = {"long_line.txt", "mul_nl.txt", "one_ch.txt", "empty.txt", "basic.txt", "harry.txt"};
 
 	file = 0;
 	while (file < sizeof(files) / sizeof(files[0]))
