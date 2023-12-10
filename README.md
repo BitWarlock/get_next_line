@@ -20,7 +20,7 @@ To integrate the `get_next_line` function into your project, follow these steps:
 
 Customize test files by adding your own or modifying existing ones. To test the function, run the following command.
 
-Test with the default uffer size:
+Test with the default buffer size:
     ```shell
     make run
     ```
@@ -29,6 +29,7 @@ Test with custom buffer size:
     ```shell
     make BUFFER_SIZE=size
     ```
+
 To remove the executable run:
     ```shell
     make clean
