@@ -6,7 +6,7 @@
 /*   By: mrezki <mrezki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 11:44:44 by mrezki            #+#    #+#             */
-/*   Updated: 2023/12/10 14:42:38 by mrezki           ###   ########.fr       */
+/*   Updated: 2023/12/10 15:35:46 by mrezki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,3 @@ char	*ft_strjoin(char *rest, char *buffer)
 	free(rest);
 	return (ptr);
 }
-// 4 8 15 10

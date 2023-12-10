@@ -1,4 +1,4 @@
-#include "get_next_line.h"
+#include "src/get_next_line.h"
 #include <stdio.h>
 #include <sys/fcntl.h>
 #include <unistd.h>
@@ -10,7 +10,9 @@ int main(void)
 	int	fd;
 	unsigned int	file;
 	char		*line;
-	char		*files[] = {"long_line.txt", "mul_nl.txt", "one_ch.txt", "empty.txt", "basic.txt", "harry.txt"};
+	/* Add your test files here */
+	char		*files[] = {"tests/basic.txt", "tests/multiple_new_lines.txt", "tests/one_character.txt",\
+		"tests/empty.txt", "tests/long_line.txt", "tests/harry_potter.txt"};
 
 	file = 0;
 	while (file < sizeof(files) / sizeof(files[0]))
@@ -22,10 +24,12 @@ int main(void)
 			perror("Error opening file");
 			return (1);
 		}
-		printf("\n\n\tTest %d for file %s\n\n", file, files[file]);
+		printf("\033[0;32m");
+		printf("\n\n\t\tTest %d for file %s\n\n\n", file + 1, files[file]);
+		printf("\033[0m");
 		while ((line = get_next_line(fd)) != NULL)
 		{
-        		printf("line: %02d -> %s\n", i, line);
+        		printf("Line number %02d: -> %s\n", i, line);
 			free(line);
         		i++;
 		}
