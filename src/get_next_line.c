@@ -6,12 +6,11 @@
 /*   By: mrezki <mrezki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 11:44:42 by mrezki            #+#    #+#             */
-/*   Updated: 2023/12/10 14:42:13 by mrezki           ###   ########.fr       */
+/*   Updated: 2023/12/10 15:58:02 by mrezki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <sys/_types/_null.h>
 
 static char	*ft_read_buffer(int fd, char *rest)
 {
