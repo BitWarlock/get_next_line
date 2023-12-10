@@ -17,18 +17,19 @@ To integrate the `get_next_line` function into your project, follow these steps:
     ```
 
 ## Testing
-You can customize the test files by adding your own or modifying existing ones. To test the function, include `main.c`.
-1. Clone the repository:
+
+Customize test files by adding your own or modifying existing ones. To test the function, run the following command.
+
+Test with the default uffer size:
     ```shell
-    git clone https://github.com/BitWarlock/get_next_line.git
+    make run
     ```
 
-2. Navigate to the project folder:
+Test with custom buffer size:
     ```shell
-    cd get_next_line
+    make BUFFER_SIZE=size
     ```
-
-3. Run the following command (replace "size" with your desired buffer size; if you don't want to specify a buffer size, the default is 69):
-```shell
-gcc -Wall -Werror -Wextra -D BUFFER_SIZE=size src/get_next_line.c src/get_next_line_utils.c main.c -o gnl_test && ./gnl_test
-```
+To remove the executable run:
+    ```shell
+    make clean
+    ```
