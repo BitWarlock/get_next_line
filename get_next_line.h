@@ -6,7 +6,7 @@
 /*   By: mrezki <mrezki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 11:44:39 by mrezki            #+#    #+#             */
-/*   Updated: 2023/12/10 14:50:31 by mrezki           ###   ########.fr       */
+/*   Updated: 2023/12/10 15:16:58 by mrezki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef GET_NEXT_LINE_H
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 69
 # endif
 
 # include <stdio.h>
