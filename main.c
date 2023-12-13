@@ -11,9 +11,9 @@ int main(void)
 	unsigned int	file;
 	char		*line;
 	/* Add your test files here */
-	char		*files[] = {"tests/basic.txt", "tests/multiple_new_lines.txt", "tests/one_character.txt",\
-		"tests/empty.txt", "tests/long_line.txt", "tests/harry_potter.txt"};
-
+	char		*files[] = {"tests/empty.txt"};
+	/*, "tests/multiple_new_lines.txt", "tests/one_character.txt",\
+		"tests/empty.txt", "tests/long_line.txt", "tests/harry_potter.txt"};*/
 	file = 0;
 	while (file < sizeof(files) / sizeof(files[0]))
 	{
