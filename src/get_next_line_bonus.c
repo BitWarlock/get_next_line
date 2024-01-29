@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrezki <mrezki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 11:44:42 by mrezki            #+#    #+#             */
-/*   Updated: 2024/01/29 14:12:38 by mrezki           ###   ########.fr       */
+/*   Updated: 2024/01/29 16:20:56 by mrezki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static char	*ft_read_buffer(int fd, char *rest)
 {
@@ -91,15 +91,15 @@ static char	*ft_get_rest(char *rest)
 
 char	*get_next_line(int fd)
 {
-	static char	*rest;
+	static char	*rest[OPEN_MAX];
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	rest = ft_read_buffer(fd, rest);
-	line = ft_extract_line(rest);
+	rest[fd] = ft_read_buffer(fd, rest[fd]);
+	line = ft_extract_line(rest[fd]);
 	if (!line)
-		return (ft_free(&rest));
-	rest = ft_get_rest(rest);
+		return (ft_free(&rest[fd]));
+	rest[fd] = ft_get_rest(rest[fd]);
 	return (line);
 }

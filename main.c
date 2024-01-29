@@ -1,39 +1,24 @@
-#include "src/get_next_line.h"
+#include "get_next_line.h"
+#include <libc.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <sys/fcntl.h>
-#include <unistd.h>
-#include <fcntl.h>
 
 int main(void)
 {
-	int	i;
-	int	fd;
-	unsigned int	file;
-	char		*line;
-	/* Add your test files here */
-	char		*files[] = {"tests/empty.txt", "tests/multiple_new_lines.txt", "tests/one_character.txt",\
-		"tests/empty.txt", "tests/long_line.txt", "tests/harry_potter.txt"};
-	file = 0;
-	while (file < sizeof(files) / sizeof(files[0]))
+	int fd = open("basic.txt", O_RDWR | O_CREAT, 0777);
+	char *str = "123\n\n456\n789\n\n\nabcdefg\n";
+	dprintf(fd, "%s", str);
+	lseek(fd, -ft_strlen(str), SEEK_END);
+	str = get_next_line(fd);
+	int i = 1;
+	while (str)
 	{
-		i = 1;
-		fd = open(files[file], O_RDWR);
-		if (!fd)
-		{
-			perror("Error opening file");
-			return (1);
-		}
-		printf("\033[0;32m");
-		printf("\n\n\t\tTest %d for file %s\n\n\n", file + 1, files[file]);
-		printf("\033[0m");
-		while ((line = get_next_line(fd)) != NULL)
-		{
-        		printf("Line number %02d: -> %s\n", i, line);
-			free(line);
-        		i++;
-		}
-		close(fd);
-		file++;
+		printf("%d : %s\n", i, str);
+		free(str);
+		str = get_next_line(fd);
+		i++;
 	}
-	return 0;
+	// system("leaks a.out");
+	return EXIT_SUCCESS;
 }
